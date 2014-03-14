@@ -12,7 +12,7 @@ window.Trellino = {
 					$rootEl: $('#content')
 				});
 
-				Backbone.history.start()
+				Backbone.history.start();
 			},
 			error: function () { debugger }
 		})
