@@ -15,7 +15,7 @@ window.Trellino.Views.BoardsNewView = Backbone.View.extend ({
 		
 		this.collection.create({title: $title}, {
 			success: function(model) {
-				Backbone.history.navigate("", {trigger: true});
+				Backbone.history.navigate("#", {trigger: true});
 			}
 		});
 	}
