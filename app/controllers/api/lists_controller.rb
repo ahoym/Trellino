@@ -1,7 +1,7 @@
 class Api::ListsController < ApplicationController
   
   def index
-    @lists = List.where("board_id = ?", params[:board_id])
+    @lists = Board.find(params[:board_id]).lists
     render :index
   end
   
@@ -22,9 +22,8 @@ class Api::ListsController < ApplicationController
   
   def update
     @list = List.find(params[:id])
-    @list.update_attributes(list_params)
-    
-    if @list.save
+
+    if @list.update_attributes(list_params)
       render "api/lists/show"
     else
       render json: { errors: @list.errors.full_messages }, status: 422

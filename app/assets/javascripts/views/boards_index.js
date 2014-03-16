@@ -1,3 +1,6 @@
+/*global Trellino, Backbone */
+"use strict";
+
 window.Trellino.Views.BoardsIndexView = Backbone.View.extend ({
 	template: JST["boards/index"],
 	

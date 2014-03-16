@@ -1,3 +1,6 @@
+/*global Trellino, Backbone */
+"use strict";
+
 window.Trellino.Views.ListsNewView = Backbone.View.extend ({
 	template: JST["lists/new"],
 	
@@ -5,8 +8,12 @@ window.Trellino.Views.ListsNewView = Backbone.View.extend ({
 		"click input.submit-btn": "createList"
 					},
 	
+	initialize: function(options) {
+		this.board = options.board
+	},
+	
 	render: function () {
-		var renderedContent = this.template({ board: this.model });
+		var renderedContent = this.template({ board: this.board });
 		this.$el.html(renderedContent);
 
 		return this;

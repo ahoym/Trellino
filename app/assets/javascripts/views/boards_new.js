@@ -1,3 +1,6 @@
+/*global Trellino, Backbone */
+"use strict";
+
 window.Trellino.Views.BoardsNewView = Backbone.View.extend ({
 	template: JST["boards/new"],
 
@@ -14,7 +17,7 @@ window.Trellino.Views.BoardsNewView = Backbone.View.extend ({
 		event.preventDefault();
 		var $title = $('#board-title').val();
 		
-		this.collection.create({title: $title}, {
+		Trellino.Collections.boards.create({title: $title}, {
 			success: function(model) {
 				Backbone.history.navigate("#boards/" + model.id, {trigger: true});
 			}

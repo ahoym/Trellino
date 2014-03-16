@@ -1,3 +1,6 @@
+/*global Trellino, Backbone */
+"use strict";
+
 window.Trellino.Views.ListsShowView = Backbone.View.extend ({
 	template: JST["lists/show"],
 	

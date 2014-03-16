@@ -1,3 +1,6 @@
+/*global Trellino, Backbone */
+"use strict";
+
 window.Trellino.Models.List = Backbone.Model.extend ({
 	urlRoot: "/api/lists",
 	
