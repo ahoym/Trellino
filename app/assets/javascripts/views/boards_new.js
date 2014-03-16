@@ -1,23 +1,23 @@
 window.Trellino.Views.BoardsNewView = Backbone.View.extend ({
 	template: JST["boards/new"],
 
-	events: { "click #create-board": "createBoard" },
+	events: { "submit form": "createBoard" },
 	
 	render: function () {
-		var renderedContent = this.template({ board: this.model });
+		var renderedContent = this.template();
 		this.$el.html(renderedContent);
 		
 		return this;
 	},
 	
-	createBoard: function () {
+	createBoard: function (event) {
+		event.preventDefault();
 		var $title = $('#board-title').val();
 		
 		this.collection.create({title: $title}, {
 			success: function(model) {
-				Backbone.history.navigate("#", {trigger: true});
+				Backbone.history.navigate("#boards/" + model.id, {trigger: true});
 			}
 		});
 	}
-	
 });

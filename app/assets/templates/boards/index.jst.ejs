@@ -2,8 +2,8 @@
 
 <ul>
 	<% boards.each( function(board) { %>
-		<li><a href="#boards/<%= board.id %>"><%= board.escape('title') %></a></li>
+		<li><a href="#/boards/<%= board.id %>"><%= board.escape('title') %></a></li>
 	<% }) %>
 </ul>
 
-<a href="#boards/new">Create a Board!</a>
+<a href="#/boards/new">Create a Board!</a>

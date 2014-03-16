@@ -3,6 +3,7 @@ window.Trellino = {
   Collections: {},
   Views: {},
   Routers: {},
+	
   initialize: function() {
   	Trellino.Collections.boards = new Trellino.Collections.Boards();
 		Trellino.Collections.boards.fetch({			
@@ -29,11 +30,12 @@ Backbone.CompositeView = Backbone.View.extend({
 		return this._subviews;
 	},
 	
-	addSubviews: function(selector, subview) {
+	addSubview: function(selector, subview) {
 		var selectorSubviews =
 			this.subviews()[selector] || (this.subviews()[selector] = []);
 		
 		selectorSubviews.push(subview);
+		
 		var $selectorEl = this.$(selector);
 		$selectorEl.append(subview.$el);		
 	},
@@ -41,15 +43,16 @@ Backbone.CompositeView = Backbone.View.extend({
 	renderSubviews: function() {
 		var view = this;
 		
-		_(this.subviews()).each(function (selectorSubviews, selectr) {
+		_(this.subviews()).each(function (selectorSubviews, selector) {
 			var $selectorEl = view.$(selector)
+			$selectorEl.empty();
 			
-			_(selectorSubviews).each(function (subviews) {
+			_(selectorSubviews).each(function (subview) {
 				$selectorEl.append(subview.render().$el);
 			});
 		});
 	}	
-})
+});
 
 $(document).ready(function(){
   Trellino.initialize();

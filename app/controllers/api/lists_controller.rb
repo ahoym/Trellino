@@ -1,20 +1,20 @@
-class ListsController < ApplicationController
+class Api::ListsController < ApplicationController
   
   def index
     @lists = List.where("board_id = ?", params[:board_id])
-    render json: @lists
+    render :index
   end
   
   def show
     @list = List.find(params[:list_id])
-    render json: @list
+    render "api/lists/show"
   end
   
   def create
     @list = List.new(list_params)
     
     if @list.save
-      render json: @list
+      render "api/lists/show"
     else
       render json: { errors: @list.errors.full_messages }, status: 422
     end
@@ -25,7 +25,7 @@ class ListsController < ApplicationController
     @list.update_attributes(list_params)
     
     if @list.save
-      render json: @list
+      render "api/lists/show"
     else
       render json: { errors: @list.errors.full_messages }, status: 422
     end
@@ -34,7 +34,7 @@ class ListsController < ApplicationController
   def destroy
     @list = List.find(params[:id])
     @list.destroy
-    render json: nil
+    render "api/lists/show"
   end
 
   private

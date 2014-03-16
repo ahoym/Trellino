@@ -1,4 +1,4 @@
-class BoardsController < ApplicationController
+class Api::BoardsController < ApplicationController
   before_filter :require_login!
   
   def index
@@ -11,24 +11,21 @@ class BoardsController < ApplicationController
     @cards = []
     @boards.each { |board| @cards << board.cards }
     @myID = current_user.id
-        
-    respond_to do |format|
-      format.html { render :index }
-      format.json { render :json => @boards }
-    end
+
+    render :index
   end
   
   def show
     @board = Board.find(params[:id])
     
-    render json: @board
+    render "api/boards/show"
   end
   
   def create
     @board = current_user.boards.build(board_params)
     
     if @board.save
-      render json: @board
+    render "api/boards/show"
     else
       render json: { errors: @board.errors.full_messages }, status: 422
     end
@@ -45,7 +42,7 @@ class BoardsController < ApplicationController
     end
     
     if @board.save
-      render json: @board
+    render "api/boards/show"
     else
       render json: { errors: @board.errors.full_messages }, status: 422
     end
@@ -54,7 +51,7 @@ class BoardsController < ApplicationController
   def destroy
     @board = Board.find(params[:id])
     @board.destroy
-    render json: nil
+    render "api/boards/show"
   end
   
 

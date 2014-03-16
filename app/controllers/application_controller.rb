@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :current_user, :require_login!, :input_auth_token
+  helper_method :current_user, :require_login!, :input_auth_token, :logged_in?
   
   def current_user
     session_token = session[:session_token]
@@ -19,6 +19,10 @@ class ApplicationController < ActionController::Base
         type=\"hidden\" 
         name=\"authenticity_token\" 
         value=\"#{form_authenticity_token}\" >".html_safe
+  end
+  
+  def logged_in?
+    !!current_user
   end
 
 end

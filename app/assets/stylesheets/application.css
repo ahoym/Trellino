@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require_tree .
+ *= require bootstrap
  */
 
 body {
@@ -28,7 +29,7 @@ span.title {
 }
 
 input#logout, input#logout{
-  background-color: white;
+  background-color: black;
 }
 
 div#content {
@@ -89,10 +90,10 @@ input[type="text"] {
 }
 
 button, input[type="submit"] {
-  font-weight: 800;
-  background: transparent;
+  font-weight: 1000;
+  background: gray;
   border: 1px dotted;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 button:hover, input[type="submit"]:hover {
