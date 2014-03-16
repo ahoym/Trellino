@@ -13,6 +13,6 @@ Trellino::Application.routes.draw do
     resources :card_assignments, only: :destroy
   end  
   
-  resource :session, only: [:new, :create, :destroy]
+  resource :session, only: [:new, :create, :destroy], :defaults => { :format => :html }
   resources :users, only: [:new, :create, :destroy]
 end

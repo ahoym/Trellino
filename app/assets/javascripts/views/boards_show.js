@@ -3,6 +3,8 @@
 
 window.Trellino.Views.BoardsShowView = Backbone.CompositeView.extend ({
 	template: JST["boards/show"],
+
+	events: { "click input.submit-btn": "test" },
 	
 	initialize: function (options) {
 		this.listenTo(this.model, "sync", this.render);
@@ -12,9 +14,9 @@ window.Trellino.Views.BoardsShowView = Backbone.CompositeView.extend ({
 		this.model.lists().each(this.addList.bind(this));
 		
 		var newListView = new Trellino.Views.ListsNewView({
-			model : this.model
+			model: this.model
 		});
-		this.addSubview('#lists-new', newListView)
+		this.addSubview('#lists-new', newListView);
 	},
 	
 	addList: function(list) {
@@ -26,11 +28,20 @@ window.Trellino.Views.BoardsShowView = Backbone.CompositeView.extend ({
 		listsShowView.render();
 	},
 	
+  removeList: function (list) {
+    var listsShowView =
+      _(this.subviews()["#lists-index"]).find(function (subview) {
+        return subview.model == list
+      });
+
+    this.removeSubview("#lists-index", listsShowView);
+  },
+	
 	render: function () {
 		var renderedContent = this.template({ board: this.model });
 		this.$el.html(renderedContent);
 		this.renderSubviews();
-  
+
 		return this;		
 	}
 });

@@ -2,7 +2,6 @@
 "use strict";
 
 window.Trellino.Models.List = Backbone.Model.extend ({
-	urlRoot: "/api/lists",
 	
 	toJSON: function () {
 		var json = Backbone.Model.prototype.toJSON.call(this);

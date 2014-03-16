@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  
   def new
     @user = User.new
   end
@@ -13,7 +12,8 @@ class UsersController < ApplicationController
       
       redirect_to root_url
     else
-      render json: { errors: @user.errors.full_messages }
+      flash.now[:errors] = @user.errors.full_messages
+      render :new, status: 422
     end
   end
 

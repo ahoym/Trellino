@@ -9,6 +9,5 @@ window.Trellino.Views.ListsShowView = Backbone.View.extend ({
 		this.$el.html(renderedContent);
 
 		return this;
-	}
-	
+	}	
 });

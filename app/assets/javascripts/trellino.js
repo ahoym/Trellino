@@ -14,8 +14,8 @@ window.Trellino = {
 					$rootEl: $('#content')
 				});
 				Backbone.history.start();
-			}
-		})
+			},
+		});
   }
 };
 
@@ -47,6 +47,7 @@ Backbone.CompositeView = Backbone.View.extend({
 
       _(selectorSubviews).each(function (subview) {
         $selectorEl.append(subview.render().$el);
+				subview.delegateEvents();
       });
     });
   },
