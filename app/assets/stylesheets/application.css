@@ -100,3 +100,11 @@ button:hover, input[type="submit"]:hover {
   background-color: transparent;
   color: blue;
 }
+
+div#control-panel {
+	float: right;
+}
+
+div#lists-index div#lists-new {
+	float:left;
+}
