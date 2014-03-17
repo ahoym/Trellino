@@ -12,9 +12,9 @@ window.Trellino.Views.BoardsShowView = Backbone.CompositeView.extend ({
 		this.listenTo(this.model.lists(), "remove", this.removeList);
 
 		this.model.lists().each(this.addList.bind(this));
-		
+
 		var newListView = new Trellino.Views.ListsNewView({
-			model: this.model
+			board: this.model
 		});
 		this.addSubview('#lists-new', newListView);
 	},

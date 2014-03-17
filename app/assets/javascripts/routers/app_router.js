@@ -16,7 +16,7 @@ window.Trellino.Routers.AppRouter = Backbone.Router.extend ({
 		var indexView = new Trellino.Views.BoardsIndexView({
 			collection: Trellino.Collections.boards
 		});
-		
+
 		this._swapView(indexView);
 	},
 	
