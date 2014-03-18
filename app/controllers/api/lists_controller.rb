@@ -7,6 +7,8 @@ class Api::ListsController < ApplicationController
   
   def show
     @list = List.find(params[:list_id])
+    @cards = @list.cards
+    
     render "api/lists/show"
   end
   

@@ -1,4 +1,4 @@
-/*globals window, Trellino:true, $, _, Backbone */
+	/*globals window, Trellino:true, $, _, Backbone */
 
 window.Trellino = {
   Models: {},
@@ -10,11 +10,8 @@ window.Trellino = {
   	Trellino.Collections.boards = new Trellino.Collections.Boards();
 		Trellino.Collections.boards.fetch({
 			success: function() {
-				Trellino.Collections.boards.each (function(board) {
-					board.lists().fetch();					
-				});
 				
-			new Trellino.Routers.AppRouter({
+				new Trellino.Routers.AppRouter({
 					$rootEl: $('#content')
 				});
 				Backbone.history.start();

@@ -1,4 +1,4 @@
-class CardsController < ApplicationController
+class Api::CardsController < ApplicationController
   
   def create
     @card = Card.new(card_params)

@@ -14,7 +14,7 @@ window.Trellino.Collections.Boards = Backbone.Collection.extend ({
 			return model;
 		} else {
 			model = new Trellino.Models.Board({ id: id });
-			moodel.fetch({
+			model.fetch({
 				succes: function() { boards.add(model) }
 			});
 			return model;

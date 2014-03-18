@@ -105,6 +105,11 @@ div#control-panel {
 	float: right;
 }
 
-div#lists-index div#lists-new {
+div.list {
 	float:left;
+	padding: 5px;
+	align: center;
+	border-style: solid;
+	border-color: black;
+	margin: 0px 5px;
 }
