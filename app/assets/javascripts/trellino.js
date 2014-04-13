@@ -1,4 +1,4 @@
-	/*globals window, Trellino:true, $, _, Backbone */
+/*globals window, Trellino:true, $, _, Backbone */
 
 window.Trellino = {
   Models: {},
@@ -9,13 +9,17 @@ window.Trellino = {
   initialize: function() {
   	Trellino.Collections.boards = new Trellino.Collections.Boards();
 		Trellino.Collections.boards.fetch({
-			success: function() {
-				
+			success: function() {			
 				new Trellino.Routers.AppRouter({
 					$rootEl: $('#content')
 				});
 				Backbone.history.start();
-		  }
+		  },
+			error: function(boards, xhr, fct) {
+		    if (xhr.status == 401) {
+	    	  window.location.replace('/session/new')
+		    }
+			}
 		});
 	}
 };
@@ -70,8 +74,4 @@ Backbone.CompositeView = Backbone.View.extend({
 
     return this._subviews;
   }	
-});
-
-$(document).ready(function(){
-  Trellino.initialize();
 });

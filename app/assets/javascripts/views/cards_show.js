@@ -16,10 +16,9 @@ window.Trellino.Views.CardsShowView = Backbone.View.extend ({
 	},
 	
 	showDeleteButton: function (event) {
-		console.log("PEW")
+		console.log("HEY")
 		$(event.currentTarget).hover(
 			function() {
-				$(this).fadeIn(500);
 				$(this).append("<button id='delete'>X</button>");
 			},
 			function() {

@@ -11,7 +11,9 @@ class ApplicationController < ActionController::Base
   end
   
   def require_login!
-    redirect_to new_session_url unless current_user
+    unless current_user
+      render status: 401
+    end
   end
   
   def input_auth_token

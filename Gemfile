@@ -21,7 +21,8 @@ group :development do
   gem 'annotate'
   gem 'debugger'
 end
-  
+
+gem 'thin'  
 gem 'ejs'
 gem 'jquery-ui-rails'
 gem 'underscore-rails'
