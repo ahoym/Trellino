@@ -1,4 +1,15 @@
 <h3><%= list.escape('title') %></h3>
 
-<div id="cards-index"></div>
+<div class="cards-index cards-list"></div>
 <div><button class="add-card">Add Card</button></div>
+
+<script>
+	$(function() {
+		$('.cards-index').sortable({
+			connectWith: '.cards-list',	
+	    stop: function (event, ui) {
+				ui.item.trigger('drop', ui.item.index());
+			}
+		});
+	});
+</script>

@@ -101,7 +101,7 @@ button:hover, input[type="submit"]:hover {
   color: blue;
 }
 
-div#control-panel {
+#control-panel {
 	float: right;
 }
 
@@ -114,10 +114,14 @@ div.list {
 	margin: 0px 5px;
 }
 
-div.card {
+.card {
 	padding: 3px;
 	align: center;
 	border-style: dotted;
 	border-color: gold;
 	margin: 2px 2px;
+}
+
+.delete-card {
+	float:right;
 }

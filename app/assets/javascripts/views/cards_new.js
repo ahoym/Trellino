@@ -21,7 +21,7 @@ window.Trellino.Views.CardsNewView = Backbone.View.extend ({
 		
 		var $title = $('#create-card').serializeJSON().card.title;
 		var $listId = this.list.id;
-		var $rank = $cards.length + 1;
+		var $rank = $cards.length;
 		var thisList = this.list;
 		
 		this.list.cards().create({title: $title, rank: $rank, list_id: $listId }, {

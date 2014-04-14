@@ -12,7 +12,7 @@ class Api::BoardsController < ApplicationController
     @boards.each { |board| @cards << board.cards }
     @myID = current_user.id
 
-    render :index
+    render "api/boards/index"
   end
   
   def show
