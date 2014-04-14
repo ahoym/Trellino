@@ -59,7 +59,6 @@ window.Trellino.Views.ListsShowView = Backbone.CompositeView.extend ({
 	},
 	
 	sortCards: function (event, model, ui) {
-		debugger
 		var position = ui.item.index();
 		
 		this.model.cards().remove(model);
@@ -71,6 +70,7 @@ window.Trellino.Views.ListsShowView = Backbone.CompositeView.extend ({
 			}
 		});
 		
+		debugger
 		model.save({ rank: position });
 		this.model.cards().add(model, {at: position});
 		

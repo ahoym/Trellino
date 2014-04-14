@@ -11,6 +11,7 @@ window.Trellino.Views.CardsShowView = Backbone.View.extend ({
 
 	initialize: function (options) {
 		this.$el.attr('id', 'item-' + this.model.get('rank'));
+		this.$el.attr('data-cardId', this.model.id);
 				
 		this.listenTo(this.model, "change", this.render);
 		
