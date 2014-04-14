@@ -53,16 +53,18 @@ window.Trellino.Views.ListsShowView = Backbone.CompositeView.extend ({
 	
 	updateSort: function (event, model, position) {
 		this.model.cards().remove(model);
-		this.model.cards().each(function (model, index) {
-			var rank = index;
+		this.model.cards().each(function (listModel, index) {
+			var newRank = index;
 			if (index >= position) {
-				rank += 1;
-				model.set('rank', rank);
+				newRank += 1;
+				listModel.save({ rank: newRank });
 			}
 		});
 
-		model.set('rank', position);
+		model.save({ rank: position });
 		this.model.cards().add(model, {at: position});
+		
+		//necessary because even if the order in the collection is changed, the subviews are not.
 		this.model.cards().each(this.removeCard.bind(this));
 		this.model.cards().each(this.addCard.bind(this));
 		

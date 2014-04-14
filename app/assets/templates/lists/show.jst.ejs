@@ -8,6 +8,7 @@
 		$('.cards-index').sortable({
 			connectWith: '.cards-list',	
 	    stop: function (event, ui) {
+				debugger
 				ui.item.trigger('drop', ui.item.index());
 			}
 		});
