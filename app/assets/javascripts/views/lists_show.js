@@ -7,10 +7,13 @@ window.Trellino.Views.ListsShowView = Backbone.CompositeView.extend ({
 	
 	events: {
  	  "click .add-card": "openAddCard",
-		"update-sort": "updateSort"
+		"update-card-order": "sortCards",
+		"drop-list": "drop"
   },
 	
 	initialize: function (options) {
+		this.$el.attr('data-list', this.model.id);
+		
 		this.listenTo(this.model, "sync", this.render);
 		this.listenTo(this.model.cards(), "add", this.addCard);
 		this.listenTo(this.model.cards(), "remove", this.removeCard);
@@ -24,6 +27,10 @@ window.Trellino.Views.ListsShowView = Backbone.CompositeView.extend ({
 		this.renderSubviews();
 
 		return this;
+	},
+	
+	drop: function (event, ui) {
+		this.$el.trigger('update-list-order', [this.model, ui])
 	},
 	
 	addCard: function(cards) {
@@ -51,7 +58,10 @@ window.Trellino.Views.ListsShowView = Backbone.CompositeView.extend ({
 		$(event.currentTarget).parent().html(cardNewView.render().$el)
 	},
 	
-	updateSort: function (event, model, position) {
+	sortCards: function (event, model, ui) {
+		debugger
+		var position = ui.item.index();
+		
 		this.model.cards().remove(model);
 		this.model.cards().each(function (listModel, index) {
 			var newRank = index;
@@ -60,10 +70,11 @@ window.Trellino.Views.ListsShowView = Backbone.CompositeView.extend ({
 				listModel.save({ rank: newRank });
 			}
 		});
-
+		
 		model.save({ rank: position });
 		this.model.cards().add(model, {at: position});
 		
+			
 		//necessary because even if the order in the collection is changed, the subviews are not.
 		this.model.cards().each(this.removeCard.bind(this));
 		this.model.cards().each(this.addCard.bind(this));

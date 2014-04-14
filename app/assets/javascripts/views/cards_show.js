@@ -6,10 +6,12 @@ window.Trellino.Views.CardsShowView = Backbone.View.extend ({
 		"mouseover": "showDeleteButton",
 		"mouseout": "removeDeleteButton",	
 		"click .delete-card": "deleteCard",
-		"drop": "drop"
+		"drop-card": "drop"
   },
 
 	initialize: function (options) {
+		this.$el.attr('id', 'item-' + this.model.get('rank'));
+				
 		this.listenTo(this.model, "change", this.render);
 		
 		this.card = options.card
@@ -17,7 +19,6 @@ window.Trellino.Views.CardsShowView = Backbone.View.extend ({
 	
 	render: function () {
 		var renderedContent = this.template({ card: this.model });
-		this.$el.attr('id', 'item-' + this.model.get('rank'));
 		this.$el.html(renderedContent);
 		
 		return this;
@@ -35,7 +36,7 @@ window.Trellino.Views.CardsShowView = Backbone.View.extend ({
 		this.model.destroy();
 	},
 	
-	drop: function (event, index) {
-		this.$el.trigger('update-sort', [this.model, index]);
+	drop: function (event, ui) {
+		this.$el.trigger('update-card-order', [this.model, ui]);
 	}
 });
