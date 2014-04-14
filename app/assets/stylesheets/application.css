@@ -114,6 +114,11 @@ div.list {
 	margin: 0px 5px;
 }
 
+.cards-index {
+	border-top: solid 1px black;
+	padding: 10px 0	30px 0;
+}
+
 .card {
 	padding: 3px;
 	align: center;

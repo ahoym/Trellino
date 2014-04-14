@@ -73,9 +73,6 @@ window.Trellino.Views.ListsShowView = Backbone.CompositeView.extend ({
 				listModel.save({ rank: newRank });
 			}
 		});
-				
-		// model.save({ rank: position });
-		// this.model.cards().add(model, {at: position});
 		
 		if (startList === this.model) {
 			model.save({ rank: position });
