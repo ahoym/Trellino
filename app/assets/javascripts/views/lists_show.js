@@ -17,6 +17,7 @@ window.Trellino.Views.ListsShowView = Backbone.CompositeView.extend ({
 		this.listenTo(this.model, "sync", this.render);
 		this.listenTo(this.model.cards(), "add", this.addCard);
 		this.listenTo(this.model.cards(), "remove", this.removeCard);
+		this.listenTo(this.model.cards(), "change", this.render);
 		
 		this.model.cards().each(this.addCard.bind(this));
 	},
@@ -60,6 +61,9 @@ window.Trellino.Views.ListsShowView = Backbone.CompositeView.extend ({
 	
 	sortCards: function (event, model, ui) {
 		var position = ui.item.index();
+		var startListId = model.escape('list_id');
+		var board = this.model.collection.board;
+		var startList = board.lists().get(startListId);
 		
 		this.model.cards().remove(model);
 		this.model.cards().each(function (listModel, index) {
@@ -69,16 +73,21 @@ window.Trellino.Views.ListsShowView = Backbone.CompositeView.extend ({
 				listModel.save({ rank: newRank });
 			}
 		});
+				
+		// model.save({ rank: position });
+		// this.model.cards().add(model, {at: position});
 		
-		debugger
-		model.save({ rank: position });
-		this.model.cards().add(model, {at: position});
-		
+		if (startList === this.model) {
+			model.save({ rank: position });
+			this.model.cards().add(model, {at: position});
+		} else {
+			startList.cards().remove(model);
+			model.save({ list_id: this.model.id, rank: position });
+			this.model.cards().add(model, {at: position});
+		}
 			
 		//necessary because even if the order in the collection is changed, the subviews are not.
 		this.model.cards().each(this.removeCard.bind(this));
 		this.model.cards().each(this.addCard.bind(this));
-		
-		this.render();
 	}
 });
