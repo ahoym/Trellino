@@ -89,6 +89,11 @@ button:hover, input[type="submit"]:hover {
 	box-shadow: 39px 30px 13px 13px rgba(5,0,5,0.5);
 }
 
+#create-board {
+	padding: 20px 40px;
+	background-color: rgba(160, 255, 80, 0.9);
+}
+
 .boards-index {
 	height: auto;
 	padding: 25px;
@@ -100,13 +105,13 @@ button:hover, input[type="submit"]:hover {
 	}
 	
 	li a {
+		text-decoration:none;
 		color:#000;
 	  background:#ffc;
 	  display:block;
 	  height:200px;
 	  width:200px;
 	  padding:10px;
-		text-decoration:none;
 	  -moz-box-shadow:5px 5px 7px rgba(33,33,33,1);
 	  -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
 	  box-shadow: 5px 5px 7px rgba(33,33,33,.7);
@@ -150,6 +155,7 @@ button:hover, input[type="submit"]:hover {
 }
 
 .informal {
+	color: black;
 	padding: 5px;
   font-family:"Reenie Beanie",arial,sans-serif;
 	font-weight: bold;
@@ -300,4 +306,13 @@ button:hover, input[type="submit"]:hover {
 	border: none;
 	font-weight: bold;
 	font-size: 24px;
+}
+
+#demo-user-btn {
+	font-size: 48px;
+	font-weight: bold;
+	border: 2px solid black;
+	margin: 30px 0;
+	padding: 30px;
+	background-color: rgba(255, 153, 0, 1.0);
 }

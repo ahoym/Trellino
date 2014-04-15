@@ -1,20 +1,32 @@
-<div class="container">
-	<%= render "layouts/errors" %>
-	
-	<h1>Sign In</h1>
-	
+<%= render "layouts/errors" %>
+
+<h1 id="board-title">Sign In</h1><br><br><br>
+
+<div class="container">	
 	<form action="<%= session_url %>" method="POST">
 		<%= input_auth_token %>
 	
-		<label >Email<br>
-		<input type="text" name="user[email]">
+		<label class="informal">Email<br>
+		<input type="text" name="user[email]" id="log-in-email">
 		</label><br>
 	
-		<label>Password<br>
-		<input type="password" name="user[password]">
+		<label class="informal">Password<br>
+		<input type="password" name="user[password]" id="log-in-pw">
 		</label><br>
 	
-		<input type='submit' value='Login' class="btn btn-primary">
-		<a href="<%= new_user_url %>">New to Trellino?</a>
+		<input type='submit' value='Login' class="btn btn-primary log-in-btn">
+		<a href="<%= new_user_url %>" class="informal">New to Trellino?</a>
 	</form>
+	
+	<button id="demo-user-btn" class="informal">Sign in as a Demo User!</button>
 </div>
+
+<script>
+	$(function() {
+		$('#demo-user-btn').on('click', function () {
+			$("#log-in-email").val("demo@user.com");
+			$("#log-in-pw").val("demo");
+			$(".log-in-btn").click();
+		});
+	});
+</script>
