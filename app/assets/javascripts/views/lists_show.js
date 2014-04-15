@@ -3,7 +3,8 @@
 
 window.Trellino.Views.ListsShowView = Backbone.CompositeView.extend ({
 	template: JST["lists/show"],
-	className: "list col-xs-2 connected-sortable",
+	className: "list connected-sortable",
+	tagName: "li",
 	
 	events: {
  	  "click .add-card": "openAddCard",

@@ -13,16 +13,17 @@ window.Trellino.Views.BoardsShowView = Backbone.CompositeView.extend ({
 		this.listenTo(this.model, "sync", this.render);
 		this.listenTo(this.model.lists(), "add", this.addList);
 		this.listenTo(this.model.lists(), "remove", this.removeList);
-			
-		this.model.lists().each(this.addList.bind(this));
-
-		var controlPanelView = new Trellino.Views.ControlPanel({ board: this.model });
-		this.addSubview('#control-panel', controlPanelView);
+		this.listenTo(this.model.lists(), "change", this.render);
 		
 		var newListView = new Trellino.Views.ListsNewView({
 			board: this.model
 		});
 		this.addSubview('.lists-index', newListView);
+		
+		var controlPanelView = new Trellino.Views.ControlPanel({ board: this.model });
+		this.addSubview('#control-panel', controlPanelView);
+		
+		this.model.lists().each(this.addList.bind(this));
 	},
 	
 	addList: function(list) {
@@ -60,10 +61,7 @@ window.Trellino.Views.BoardsShowView = Backbone.CompositeView.extend ({
 		this.model.lists().add(model, {at: position});
 		
 		this.model.lists().each(this.removeList.bind(this));
-		// popping and adding the create-list view to ensure it is at the right-most end.
-		var newListView = this.subviews()['.lists-index'].pop();
 		this.model.lists().each(this.addList.bind(this));
-		this.subviews()['.lists-index'].push(newListView);
 		
 		this.render();
 	},

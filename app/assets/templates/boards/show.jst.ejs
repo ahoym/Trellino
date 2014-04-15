@@ -1,13 +1,19 @@
-<h1><%= board.escape('title') %></h1>
-<div class="lists-index lists-list col-xs-8"></div>
-                                          
-<div id="control-panel" class="col-xs-2"></div>
+<h1 id="board-title"><%= board.escape('title') %></h1>
+<br><br><br>
+<ul class="lists-index lists-list"></ul>
+
+<!-- <div id="control-panel" class="col-xs-2"></div> -->
 
 <script>
 	$(function() {
 		$('.lists-index').sortable({
-			connectWith: '.lists-list',	
+			connectWith: '.lists-list',
+			tolerance: 'pointer',
+			start: function (event, ui) {
+				ui.item.toggleClass('dragged');
+			},
 	    stop: function (event, ui) {
+				ui.item.toggleClass('dragged');
 				ui.item.trigger('drop-list', ui);
 			}
 		});

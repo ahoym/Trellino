@@ -1,14 +1,16 @@
-<nav class="navbar navbar-default" role="navigation">
+<div class="navbar navbar-default navbar-static-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/#">Trellino</a>
+      <a class="navbar-brand fancy-font nickname" href="#">Notella</a>
     </div>
-    <ul class="nav navbar-right">
-      <li>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
         <% if logged_in? %>
-          <%= button_to "Log out", session_url, { method: :delete, class: "btn btn-xs btn-warning" } %>
+          <%= link_to "Log out", session_url, { method: :delete} %>
         <% end %>
-      </li>
-    </ul>
+				</li>
+      </ul>
+    </div><!--/.nav-collapse -->
   </div>
-</nav>
+</div><!-- End of navbar -->

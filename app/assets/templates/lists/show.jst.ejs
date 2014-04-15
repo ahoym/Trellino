@@ -1,16 +1,21 @@
-<h3><%= list.escape('title') %></h3>
-
-<div class="cards-index cards-list">
-	
-	<div class="empty-list"></div>
-</div>
-<div><button class="add-card">Add Card</button></div>
+<h3 class="list-title"><%= list.escape('title') %></h3>
+<ul class="cards-index cards-list"></ul>
+<div><a class="add-card informal">Post a Note</a></div>
 
 <script>
 	$(function() {
 		$('.cards-index').sortable({
-			connectWith: '.cards-list',	
+			connectWith: '.cards-list',
+			tolerance: 'pointer',
+			placeholder: 'placeholder',
+			forcePlaceholderSize: true,
+			start: function (event, ui) {
+				ui.placeholder.height(ui.item.height());
+				ui.placeholder.width(ui.item.width());
+				ui.item.toggleClass('dragged');
+			},
 	    stop: function (event, ui) {
+				ui.item.toggleClass('dragged');
 				ui.item.trigger('drop-card', ui);
 			}
 		});

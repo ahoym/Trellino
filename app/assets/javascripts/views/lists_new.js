@@ -3,7 +3,7 @@
 
 window.Trellino.Views.ListsNewView = Backbone.View.extend ({
 	template: JST["lists/new"],
-	className: "list",
+	className: "list new-list",
 	
 	events: { "submit form": "createList" },
 

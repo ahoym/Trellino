@@ -1,11 +1,21 @@
 window.Trellino.Views.CardsNewView = Backbone.View.extend ({
 	template: JST["cards/new"],
+	className: "create-card",
 	
 	events: { "click #create-card-btn": "createCard",
 	 					"click .cancel": "cancel" },
 	
 	initialize: function(options) {
 		this.list = options.list;
+		
+		//remove DOM on mouse click away
+		var that = this;
+		this.$el.mouseleave(function(){  
+      $('html').click(function(){
+              that.cancel();
+          $('html').unbind('click');
+       });
+    });
 	},
 	
 	render: function () {
@@ -19,22 +29,22 @@ window.Trellino.Views.CardsNewView = Backbone.View.extend ({
 		event.preventDefault();
 		var $cards = this.list.cards();
 		
-		var $title = $('#create-card').serializeJSON().card.title;
+		var $title = $('#create-card-form').serializeJSON().card.title;
 		var $listId = this.list.id;
 		var $rank = $cards.length;
 		var thisList = this.list;
 		
 		this.list.cards().create({title: $title, rank: $rank, list_id: $listId }, {
 			success: function () {
-				thisList.trigger("add");
+				thisList.trigger("sync");
 			}
 		});
-		$("input[type='text']").val("")
+		$("input[type='textarea']").val("")
 	},
 	
 	cancel: function (event) {
-		event.preventDefault();
+		if (event) event.preventDefault();
 		this.$el.remove();
-		this.list.trigger("add");
+		this.list.trigger("sync");
 	}
 });
