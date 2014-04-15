@@ -1,7 +1,15 @@
-
 development:
-  adapter: sqlite3
-  database: trellino_development
+  adapter: postgresql
+  database: notella_dev
+  encoding: utf8
   host: localhost
+  pool: 5
+  timeout: 5000
+  username: postgres
+  
+production: 
+  adapter: postgresql
+  database: postgres
+  encoding: utf8
   pool: 5
   timeout: 5000

@@ -45,7 +45,8 @@ window.Trellino.Views.BoardsShowView = Backbone.CompositeView.extend ({
   },
 	
 	sortLists: function (event, model, ui) {
-		var position = ui.item.index();
+		var position = ui.item.index() - 1;
+		if (position <= 0) position = 0;
 		
 		this.model.lists().remove(model);
 		this.model.lists().each( function (boardList, index) {

@@ -63,6 +63,6 @@ cards = Card.create!([
   #Optional: List 6 on Work
   {list_id: 6, rank: 1, title: "Review workflows"},
   {list_id: 6, rank: 2, title: "Redecorate conference room"},
-  {list_id: 6, rank: 2, title: "Create an About Page"}
+  {list_id: 6, rank: 2, title: "Create an About Page"},
   {list_id: 6, rank: 2, title: "Create a Contacts Page"}
 ])
