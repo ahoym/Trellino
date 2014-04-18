@@ -17,7 +17,6 @@ class Board < ActiveRecord::Base
   has_many :lists, dependent: :destroy
   has_many :cards, through: :lists
   
-  
   def self.for_member(user)
     joins(:board_assignments).where("board_assignments.user_id = ?", user.id)
   end

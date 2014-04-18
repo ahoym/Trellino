@@ -23,6 +23,7 @@ class Api::BoardsController < ApplicationController
   end
   
   def create
+    debugger
     @board = current_user.boards.build(board_params)
     
     if @board.save
@@ -58,6 +59,6 @@ class Api::BoardsController < ApplicationController
 
   private
   def board_params
-    params.require(:board).permit(:title, :description)
+    params.require(:board).permit(:title)
   end
 end

@@ -15,7 +15,7 @@ window.Trellino.Views.BoardsNewView = Backbone.View.extend ({
 	
 	createBoard: function (event) {
 		event.preventDefault();
-		var $title = $('#board-title').val();
+		var $title = $('form').serializeJSON()['board'].title;
 		
 		Trellino.Collections.boards.create({title: $title}, {
 			success: function(model) {
