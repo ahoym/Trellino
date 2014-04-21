@@ -174,16 +174,6 @@ button:hover, input[type="submit"]:hover {
 	white-space: nowrap;
 }
 
-.list-title {
-  font-family:"Reenie Beanie",arial,sans-serif;
-	font-weight: bold;
-	font-size: 48px;
-	-moz-transition:-moz-transform .15s linear;
-  -o-transition:-o-transform .15s linear;
-  -webkit-transition:-webkit-transform .15s linear;
-	overflow-x: scroll;
-}
-
 .list {
 	cursor: pointer;
 	padding: 5px 10px;
@@ -194,6 +184,16 @@ button:hover, input[type="submit"]:hover {
 	margin: 0px 5px;
 	display: inline-block;
 	vertical-align: text-top;
+}
+
+.list-title {
+  font-family:"Reenie Beanie",arial,sans-serif;
+	font-weight: bold;
+	font-size: 48px;
+	-moz-transition:-moz-transform .15s linear;
+  -o-transition:-o-transform .15s linear;
+  -webkit-transition:-webkit-transform .15s linear;
+	overflow-x: scroll;
 }
 
 .new-list {
