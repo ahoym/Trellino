@@ -4,9 +4,6 @@ window.Trellino.Views.CardsShowView = Backbone.View.extend ({
 	tagName: "li",
 	
 	events: { 
-		"mouseover": "showDeleteButton",
-		"mouseout": "removeDeleteButton",	
-		"click .delete-item": "deleteCard",
 		"drop-card": "drop"
   },
 
@@ -26,19 +23,10 @@ window.Trellino.Views.CardsShowView = Backbone.View.extend ({
 		return this;
 	},
 	
-	showDeleteButton: function (event) {
-		this.$('.delete-item').removeClass('hide');
-	},
-	
-	removeDeleteButton: function (event) {
-		this.$('.delete-item').addClass('hide');
-	},
-	
-	deleteCard: function (event) {
-		this.model.destroy();
-	},
-	
 	drop: function (event, ui) {
 		this.$el.trigger('update-card-order', [this.model, ui]);
 	}
 });
+
+// deleteable is a mixin
+_.extend(Trellino.Views.CardsShowView.prototype, deleteable);

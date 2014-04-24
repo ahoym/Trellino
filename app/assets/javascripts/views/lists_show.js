@@ -35,6 +35,18 @@ window.Trellino.Views.ListsShowView = Backbone.CompositeView.extend ({
 		this.$el.trigger('update-list-order', [this.model, ui])
 	},
 	
+	deleteItem: function (event) {
+		this.model.destroy();
+	},
+	
+	showDeleteItem: function (event) {
+		this.$('.delete-item').removeClass('hide');
+	},
+	
+	removeDeleteItem: function (event) {
+		this.$('.delete-item').addClass('hide');
+	},
+	
 	addCard: function(cards) {
 		var cardsShowView = new Trellino.Views.CardsShowView({
 			model: cards
@@ -89,3 +101,6 @@ window.Trellino.Views.ListsShowView = Backbone.CompositeView.extend ({
 		this.model.cards().each(this.addCard.bind(this));
 	}
 });
+
+// deleteable is a mixin
+_.extend(Trellino.Views.ListsShowView.prototype, deleteable);

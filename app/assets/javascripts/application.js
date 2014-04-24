@@ -19,6 +19,7 @@
 //= require backbone-relational
 //= require trellino
 //= require bootstrap
+//= require_tree ./mixins
 //= require_tree ./models
 //= require_tree ./collections
 //= require_tree ../templates

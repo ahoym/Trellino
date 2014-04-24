@@ -1,4 +1,5 @@
 /*globals window, Trellino:true, $, _, Backbone */
+"use strict"
 
 window.Trellino = {
   Models: {},
