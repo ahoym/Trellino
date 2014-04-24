@@ -1,20 +1,21 @@
-var deleteable = {
-	
+Deleteable = {	
 	events: {
 		"mouseover": "showDeleteItem",
 		"mouseout": "removeDeleteItem",
 		"click .delete-item": "deleteItem"
 	},
 	
-	showDeleteItem: function (event) {
-		this.$('.delete-item').removeClass('hide');
-	},
+	methods: {
+		showDeleteItem: function (event) {
+			this.$('.delete-item').first().removeClass('hide');
+		},
 	
-	removeDeleteItem: function (event) {
-		this.$('.delete-item').addClass('hide');
-	},
+		removeDeleteItem: function (event) {
+			this.$('.delete-item').first().addClass('hide');
+		},
 	
-	deleteItem: function (event) {
-		this.model.destroy();
+		deleteItem: function (event) {
+			this.model.destroy();
+		}
 	}
 }

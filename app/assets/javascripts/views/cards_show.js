@@ -1,10 +1,13 @@
-window.Trellino.Views.CardsShowView = Backbone.View.extend ({
+window.Trellino.Views.CardsShowView = Backbone.View.extend (
+	_.extend ({}, Deleteable.methods, {
 	template: JST["cards/show"],
 	className: "card",
 	tagName: "li",
 	
-	events: { 
-		"drop-card": "drop"
+	events: function() { 
+		return _.extend({}, Deleteable.events, {
+			"drop-card": "drop"
+		});
   },
 
 	initialize: function (options) {
@@ -26,7 +29,7 @@ window.Trellino.Views.CardsShowView = Backbone.View.extend ({
 	drop: function (event, ui) {
 		this.$el.trigger('update-card-order', [this.model, ui]);
 	}
-});
+}));
 
-// deleteable is a mixin
-_.extend(Trellino.Views.CardsShowView.prototype, deleteable);
+// Deleteable is a mixin which contains events and functions for deleting items.
+// _.extend(Trellino.Views.CardsShowView.prototype, Deleteable);

@@ -1,15 +1,18 @@
 /*global Trellino, Backbone */
 "use strict";
 
-window.Trellino.Views.ListsShowView = Backbone.CompositeView.extend ({
+window.Trellino.Views.ListsShowView = Backbone.CompositeView.extend (
+	_.extend ({}, Deleteable.methods, {
 	template: JST["lists/show"],
 	className: "list connected-sortable",
 	tagName: "li",
 	
-	events: {
- 	  "click .add-card": "openAddCard",
-		"update-card-order": "sortCards",
-		"drop-list": "drop"
+	events: function() { 
+		return _.extend({}, Deleteable.events, {
+	 	  "click .add-card": "openAddCard",
+			"update-card-order": "sortCards",
+			"drop-list": "drop"
+		});
   },
 	
 	initialize: function (options) {
@@ -35,18 +38,6 @@ window.Trellino.Views.ListsShowView = Backbone.CompositeView.extend ({
 		this.$el.trigger('update-list-order', [this.model, ui])
 	},
 	
-	deleteItem: function (event) {
-		this.model.destroy();
-	},
-	
-	showDeleteItem: function (event) {
-		this.$('.delete-item').removeClass('hide');
-	},
-	
-	removeDeleteItem: function (event) {
-		this.$('.delete-item').addClass('hide');
-	},
-	
 	addCard: function(cards) {
 		var cardsShowView = new Trellino.Views.CardsShowView({
 			model: cards
@@ -66,6 +57,7 @@ window.Trellino.Views.ListsShowView = Backbone.CompositeView.extend ({
 	},
 	
 	openAddCard: function (event) {
+		debugger
 		event.preventDefault();
 		var cardNewView = new Trellino.Views.CardsNewView({ list: this.model });
 		
@@ -100,7 +92,4 @@ window.Trellino.Views.ListsShowView = Backbone.CompositeView.extend ({
 		this.model.cards().each(this.removeCard.bind(this));
 		this.model.cards().each(this.addCard.bind(this));
 	}
-});
-
-// deleteable is a mixin
-_.extend(Trellino.Views.ListsShowView.prototype, deleteable);
+}));
