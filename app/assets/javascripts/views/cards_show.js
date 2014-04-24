@@ -30,6 +30,3 @@ window.Trellino.Views.CardsShowView = Backbone.View.extend (
 		this.$el.trigger('update-card-order', [this.model, ui]);
 	}
 }));
-
-// Deleteable is a mixin which contains events and functions for deleting items.
-// _.extend(Trellino.Views.CardsShowView.prototype, Deleteable);

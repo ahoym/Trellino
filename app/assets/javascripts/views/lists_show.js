@@ -2,12 +2,14 @@
 "use strict";
 
 window.Trellino.Views.ListsShowView = Backbone.CompositeView.extend (
+	// This extra _.extend allows me to add mixin functions.
 	_.extend ({}, Deleteable.methods, {
 	template: JST["lists/show"],
 	className: "list connected-sortable",
 	tagName: "li",
 	
 	events: function() { 
+		// This extra _.extend allows me to add mixin events.
 		return _.extend({}, Deleteable.events, {
 	 	  "click .add-card": "openAddCard",
 			"update-card-order": "sortCards",
@@ -57,7 +59,6 @@ window.Trellino.Views.ListsShowView = Backbone.CompositeView.extend (
 	},
 	
 	openAddCard: function (event) {
-		debugger
 		event.preventDefault();
 		var cardNewView = new Trellino.Views.CardsNewView({ list: this.model });
 		
