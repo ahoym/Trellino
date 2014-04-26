@@ -1,6 +1,14 @@
-# Trello project!
+[Notella](http://notella.herokuapp.com/)
+============
 
 Clone of the organization web application, Trello. In progress.
+
+## Technical Details
+
++ Heavy use of jQuery, and the Sortable() library.
++ Use of subviews, taking care to eliminate and prevent zombie views.
++ Styling through a combination of CSS and Boostrap 3.1.
++ Backbone.js front-end with Rails back-end.
 
 ## Terse guideline
 
