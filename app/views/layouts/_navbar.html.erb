@@ -4,6 +4,9 @@
       <a class="navbar-brand fancy-font nickname" href="/#">Notella</a>
     </div>
     <div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="#" data-toggle="modal" data-target="#aboutModal">About</a></li>
+			</ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
         <% if logged_in? %>
@@ -14,3 +17,34 @@
     </div><!--/.nav-collapse -->
   </div>
 </div><!-- End of navbar -->
+
+<!-- About Modal Content  -->
+<div class="modal fade" id="aboutModal">
+	<div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+          <h4 class="modal-title">About Notella</h4>
+        </div>
+        <div class="modal-body">
+					<p><em>Notella is a clone of the task organization web application, Trello.</em><br/>
+						<strong>Like Trello, users can:</strong></p>
+						<ul>
+							<li>Make boards to hold lists.</li>
+							<li>Make lists which contain cards</li>
+							<li>Make cards which contain information on the tastk, note, etc.</li>
+							<li>Drag and drop cards between lists, and re-order the lists.</li>
+						</ul>
+
+					<p><strong>Some Technical Things:</strong></p>
+					<ul>
+						<li>Composed of a Rails back-end framework and Backbone.js front-end framework.</li>
+						<li>Heavy use of jQuery, especially the Sortable() library.</li>
+						<li>Styling done using a combination of Bootstrap 3.1 and custom CSS.</li>
+					</ul>
+					
+					<p><strong>Check out my personal website and porfolio, <a href="http://www.malcolmahoy.com" class="fancy-font">Here!</a></strong></p>
+        </div>
+      </div>
+    </div>
+</div>
