@@ -10,5 +10,4 @@ window.Trellino.Views.BoardsIndexView = Backbone.View.extend ({
 		this.$el.html(renderedContent);		
 		return this;
 	}
-	
 });
